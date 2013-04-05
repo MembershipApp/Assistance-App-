@@ -2,7 +2,7 @@ var rootPath = __dirname;
 
 // node modules
 var http = require('http');
-var url = require('url');
+var url = require('url'); // url module
 
 // custom modules
 var config = require(rootPath+'/config.js').config();
@@ -20,9 +20,11 @@ var server = require(rootPath+'/'+config.env+'/'+config.env+'.js').
 server(http , url , mongodb , notif).
 
 // listening to port below:
-listen(config.port);
+listen(process.env.PORT , process.env.IP);
+
+console.log(rootPath);
 
 // console server port info
-console.log("Server running at http://appzhao.com:"+server.address().port+' | '+config.env);
+console.log("Server running at http://"+process.env.IP+":"+process.env.PORT+' | '+config.env);
  
  
